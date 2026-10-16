@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#d7e6f4" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Falcon</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #d7e6f4;
+      color: #1d2b3a;
+      font-family: system-ui, sans-serif;
+      overflow: hidden;
+      overscroll-behavior: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+    }
+    #view {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      touch-action: none;
+    }
+    #view canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+    #hud {
+      flex: none;
+      padding: 4px 16px calc(18px + env(safe-area-inset-bottom));
+    }
+    #pips {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      min-height: 28px;
+    }
+    .pip {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      box-sizing: border-box;
+      background: #fff;
+      border: 2px solid #8d98a6;
+    }
+    .pip.on {
+      background: #2f6fed;
+      border-color: #2f6fed;
+    }
+    .pips-spacer { min-height: 28px; }
+    #top {
+      position: absolute;
+      top: calc(12px + env(safe-area-inset-top));
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .chip {
+      min-width: 52px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #fff;
+      color: #1d2b3a;
+      font: 700 17px/1.2 system-ui, sans-serif;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      box-shadow: 0 1px 3px rgba(29, 43, 58, 0.18);
+    }
+    #done:empty { display: none; }
+    #done {
+      text-align: center;
+      padding-top: 12px;
+    }
+    .cleared {
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    #again {
+      min-height: 44px;
+      min-width: 120px;
+      padding: 10px 22px;
+      font: 600 16px/1 system-ui, sans-serif;
+      color: #1d2b3a;
+      background: #fff;
+      border: 1px solid #b7c3d0;
+      border-radius: 8px;
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "./vendor/OrbitControls.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="view"></div>
+  <div id="hud">
+    <div id="pips"></div>
+    <div id="done"></div>
+  </div>
+  <script type="module" src="./main.js?v=motion7"></script>
+</body>
+</html>
